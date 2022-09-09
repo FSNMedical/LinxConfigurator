@@ -205,9 +205,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_sData[40] = "timeo,0";
     m_sData[41] = "quad-,0";
     m_sData[42] = "detec,1";
-    m_sData[43] = "orph-,,";//6.1 change "swtyp,0" to "orph-,,". Expand from 1 data field to 2 used to configure Orpheus.
-    m_sData[44] = "email,0";
-    m_sData[45] = "typsw,0";            // 2022-09-07 ---- IPS4000 support
+    m_sData[LNX_IDEX_43_ORPH] = "orph-,,"; //6.1 change "swtyp,0" to "orph-,,". Expand from 1 data field to 2 used to configure Orpheus.
+    m_sData[LNX_IDEX_44_EMAIL] = "email,0";
+    m_sData[LNX_IDEX_45_TYPSW] = "typsw,0";            // 2022-09-07 ---- IPS4000 support
 
     // HUH? dunno why the shift, but...
     for(int i=46; i > 0; i--)           // "   "    ---- 46, was 45
@@ -376,19 +376,19 @@ void MainWindow::ParseFile()
    else//If there is an invalid entry that is not consistent with current or legacy format the interface will show "0 Lights"
        ui->buttonGroup->button(0)->click();
 
-    ui->SerialNumlineEdit->setText(StringWOToken(m_sData[38]));
-    ui->SysNamelineEdit->setText(StringWOToken(m_sData[39]));
-    ui->PassWrdlineEdit->setText(StringWOToken(m_sData[40]));
+    ui->SerialNumlineEdit->setText(StringWOToken(m_sData[LNX_IDEX_37_SERL]));
+    ui->SysNamelineEdit->setText(StringWOToken(m_sData[LNX_IDEX_38_NAME]));
+    ui->PassWrdlineEdit->setText(StringWOToken(m_sData[LNX_IDEX_39_PASSW]));
 
-    sTemp = m_sData[44].left(5);
+    sTemp = m_sData[LNX_IDEX_43_ORPH].left(5);
 
     if(sTemp == "swtyp")
-        m_sData[44] = "orph-,,";
+        m_sData[LNX_IDEX_43_ORPH] = "orph-,,";
 
-    if(m_sData[44].count(',') == 2)
+    if(m_sData[LNX_IDEX_43_ORPH].count(',') == 2)
     {
-        ui->OrphStation->setText(m_sData[44].section(',',1,1));
-        ui->OrpheusServer->setText(m_sData[44].section(',',2,2));
+        ui->OrphStation->setText(m_sData[LNX_IDEX_43_ORPH].section(',',1,1));
+        ui->OrpheusServer->setText(m_sData[LNX_IDEX_43_ORPH].section(',',2,2));
     }
 }
 
@@ -440,7 +440,7 @@ void MainWindow::on_pushButton_clicked()
         sTemp = sTemp + sLocal;
     }
 
-    m_sData[31] = sTemp;
+    m_sData[LNX_IDEX_30_DSTYP] = sTemp;
 
     //If saving a valid two light configuration, Codec should default to off.
     if((ui->buttonGroup->checkedId() > 0) && (buttonGroup2->checkedId() > 0))
@@ -449,22 +449,22 @@ void MainWindow::on_pushButton_clicked()
     sTemp = "dcss-,";
     sTemp2.sprintf("%i",ui->CaptureCombo->currentIndex());
 
-    m_sData[34] = sTemp + sTemp2;
+    m_sData[LNX_IDEX_33_DSCC] = sTemp + sTemp2;
 
-    m_sData[36] = "skylt," + ui->buttonGroup->checkedButton()->text() + "," + buttonGroup2->checkedButton()->text();
+    m_sData[LNX_IDEX_35_SKYLT] = "skylt," + ui->buttonGroup->checkedButton()->text() + "," + buttonGroup2->checkedButton()->text();
 
     ui->SerialNumlineEdit->setText(ui->SerialNumlineEdit->text().remove(","));
-    m_sData[38] = "serl#," + ui->SerialNumlineEdit->text();
+    m_sData[LNX_IDEX_37_SERL] = "serl#," + ui->SerialNumlineEdit->text();
 
     ui->SysNamelineEdit->setText(ui->SysNamelineEdit->text().remove(","));
-    m_sData[39] ="name-," + ui->SysNamelineEdit->text();
+    m_sData[LNX_IDEX_38_NAME] ="name-," + ui->SysNamelineEdit->text();
 
     ui->PassWrdlineEdit->setText(ui->PassWrdlineEdit->text().remove(","));
-    m_sData[40] = "passw," + ui->PassWrdlineEdit->text();
+    m_sData[LNX_IDEX_39_PASSW] = "passw," + ui->PassWrdlineEdit->text();
 
     ui->OrphStation->setText(ui->OrphStation->text().remove(","));
     ui->OrpheusServer->setText(ui->OrpheusServer->text().remove(","));
-    m_sData[44] = "orph-," + ui->OrphStation->text() + "," + ui->OrpheusServer->text();
+    m_sData[LNX_IDEX_43_ORPH] = "orph-," + ui->OrphStation->text() + "," + ui->OrpheusServer->text();
 
     // 2022-09-07: support for IPS4000
     //ui->IP_addr->setText();
