@@ -390,6 +390,8 @@ void MainWindow::ParseFile()
         ui->OrphStation->setText(m_sData[LNX_IDEX_43_ORPH].section(',',1,1));
         ui->OrpheusServer->setText(m_sData[LNX_IDEX_43_ORPH].section(',',2,2));
     }
+
+    //ui->SwitchIPAddr
 }
 
 QString MainWindow::StringWOToken(QString sVal)
@@ -468,6 +470,7 @@ void MainWindow::on_pushButton_clicked()
 
     // 2022-09-07: support for IPS4000
     //ui->IP_addr->setText();
+    m_sData[LNX_IDEX_45_TYPSW] = "typsw,," + ui->SwitchIPAddr->text();
 
     for(int i = 1; i < 46; i++)
     {
