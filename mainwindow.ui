@@ -11,14 +11,14 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>LinxConfiguratorR6.9</string>
+   <string>LinxConfiguratorR7.0.1</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
       <x>530</x>
-      <y>630</y>
+      <y>640</y>
       <width>90</width>
       <height>50</height>
      </rect>
@@ -2804,7 +2804,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>660</y>
+      <y>680</y>
       <width>119</width>
       <height>22</height>
      </rect>
@@ -2849,7 +2849,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>640</y>
+      <y>660</y>
       <width>110</width>
       <height>16</height>
      </rect>
@@ -2945,7 +2945,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>660</y>
+      <y>680</y>
       <width>180</width>
       <height>22</height>
      </rect>
@@ -2958,7 +2958,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>660</y>
+      <y>680</y>
       <width>180</width>
       <height>22</height>
      </rect>
@@ -2968,7 +2968,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>630</y>
+      <y>650</y>
       <width>150</width>
       <height>30</height>
      </rect>
@@ -2981,7 +2981,7 @@ File</string>
     <property name="geometry">
      <rect>
       <x>339</x>
-      <y>630</y>
+      <y>650</y>
       <width>190</width>
       <height>30</height>
      </rect>
@@ -2993,8 +2993,8 @@ File</string>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>20</y>
+      <x>10</x>
+      <y>30</y>
       <width>641</width>
       <height>781</height>
      </rect>
@@ -3010,8 +3010,8 @@ File</string>
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>560</y>
-        <width>206</width>
+        <y>550</y>
+        <width>231</width>
         <height>40</height>
        </rect>
       </property>
@@ -3138,6 +3138,19 @@ File</string>
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="IP_Addr">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>690</y>
+        <width>71</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>IP Address</string>
       </property>
      </widget>
     </widget>
@@ -4661,7 +4674,7 @@ Save the &quot;VyNet.csv&quot; file and place in .GenX directory with the &quot;
      <x>0</x>
      <y>0</y>
      <width>646</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
