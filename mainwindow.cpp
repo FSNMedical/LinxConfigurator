@@ -196,8 +196,6 @@ MainWindow::MainWindow(QWidget *parent) :
     m_sData[33] = "dcss-,0";
     m_sData[34] = "ipod-,0";
     m_sData[35] = "skylt,0,0";
-    //m_sData[36] = "slav7,0,0";
-    //m_sData[37] = "slav8,0,0";
     m_sData[36] = "dsply,1";
     m_sData[37] = "serl#,Unassigned";
     m_sData[38] = "name-,OR-1";
@@ -468,9 +466,12 @@ void MainWindow::on_pushButton_clicked()
     ui->OrpheusServer->setText(ui->OrpheusServer->text().remove(","));
     m_sData[LNX_IDEX_43_ORPH] = "orph-," + ui->OrphStation->text() + "," + ui->OrpheusServer->text();
 
+    // ??? email line is missing --- maybe i need to just specify here?
+    m_sData[LNX_IDEX_44_EMAIL] = "email,,";
+
     // 2022-09-07: support for IPS4000
     //ui->IP_addr->setText();
-    m_sData[LNX_IDEX_45_TYPSW] = "typsw,," + ui->SwitchIPAddr->text();
+    m_sData[LNX_IDEX_45_TYPSW] = "typsw," + QString::number(m_nSwitchNum) + "," + ui->SwitchIPAddr->text();
 
     for(int i = 1; i < 46; i++)
     {
@@ -798,20 +799,24 @@ void MainWindow::on_SwitchCombo_currentIndexChanged(int index)
     if(index == 0)
     {
         // do nothing
+        m_nSwitchNum = TYPE_SWITCH_NONE;
     }
     if(index == 1)
     {
         // for the IPS4000 switch
         ui->IP_addr->setText("IP Address:");
+        m_nSwitchNum = TYPE_SWITCH_IPS4000;
         //ui->IPADDRLineEdit->
     }
     if(index == 2)
     {
         // Opticis
+        m_nSwitchNum = TYPE_SWITCH_OPTICIS;
     }
     if(index == 3)
     {
         // Ophit
+        m_nSwitchNum = TYPE_SWITCH_OPHIT;
     }
 }
 

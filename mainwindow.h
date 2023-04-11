@@ -57,6 +57,14 @@
 #define LNX_IDEX_44_EMAIL (44) //email,0
 #define LNX_IDEX_45_TYPSW (45) //typsw,4,192.168.200.170
 
+enum TYPE_OF_SWITCH{
+    TYPE_SWITCH_NONE = 0,
+    TYPE_SWITCH_OPHIT,      // 1
+    TYPE_SWITCH_OPTICIS,    // 2
+    TYPE_SWITCH_VYNET,      // 3
+    TYPE_SWITCH_IPS4000     // 4        // 2021-12-13
+};
+
 
 namespace Ui {
 class MainWindow;
@@ -178,6 +186,8 @@ private:
     QRegExpValidator m_RegExValidateMAC;
 
     QButtonGroup *buttonGroup2;
+
+    int     m_nSwitchNum;
 };
 
 #endif // MAINWINDOW_H
